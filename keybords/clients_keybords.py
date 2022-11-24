@@ -11,3 +11,19 @@ info_button = KeyboardButton('/info')
 quiz_button = KeyboardButton('/quiz')
 
 start_markup.add(start_button, info_button)
+
+
+submit_markup = ReplyKeyboardMarkup(
+    resize_keyboard=True,
+    one_time_keyboard=True
+).add(
+    KeyboardButton("ДА"),
+    KeyboardButton("НЕТ"),
+)
+
+cancel_markup = ReplyKeyboardMarkup(
+    resize_keyboard=True,
+    one_time_keyboard=True
+).add(
+    KeyboardButton("CANCEL")
+)
