@@ -2,7 +2,7 @@ from aiogram import Dispatcher, types
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import bot
 from keybords.clients_keybords import start_markup
-
+from parser import animee
 
 # @dp.message_handler(commands=['start', 'help'])
 async def start_handler(message: types.Message):
@@ -54,11 +54,25 @@ async def pin(message: types.Message):
     else:
         await bot.send_message(message.chat.id, f"ответь")
 
+
+async def parser_anime(message: types.Message):
+    items = animee.parser()
+    for item in items:
+        await message.answer(
+            f"{item['link']}\n\n"
+            f"{item['title']}\n"
+            f"{item['status']}\n"
+            f"#Y{item['year']}\n"
+            f"#{item['country']}\n"
+            f"#{item['genre']}\n"
+        )
+
 def register_handler_client(dp: Dispatcher):
     dp.register_message_handler(start_handler, commands=['start', 'help'])
     dp.register_message_handler(quiz_1, commands=['quiz'])
     dp.register_message_handler(mem_1, commands=['mem'])
     dp.register_message_handler(info_handler, commands=['info'])
     dp.register_message_handler(pin, commands=["pin"], commands_prefix='!')
+    dp.register_message_handler(parser_anime, commands=["anime"])
 
 

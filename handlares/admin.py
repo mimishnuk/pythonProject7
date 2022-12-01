@@ -1,9 +1,6 @@
 import random
 from aiogram import Dispatcher, types
-from config import bot, dp, ADMIN
-
-
-
+from config import bot, ADMIN
 
 async def game(message: types.Message):
     if message.from_user.id in ADMIN:

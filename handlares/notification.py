@@ -20,7 +20,7 @@ async def go_to_eat():
 
 async def scheduler():
     aioschedule.every().monday.at('06:30').do(go_to_study)
-    aioschedule.every().thursday.at('13:51').do(go_to_eat)
+    aioschedule.every().thursday.at('21:20').do(go_to_eat)
     while True:
         await aioschedule.run_pending()
         await asyncio.sleep(2)
